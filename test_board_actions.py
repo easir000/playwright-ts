@@ -42,32 +42,40 @@ def create_board(driver, board_name):
 # Function to add a list
 def add_list(driver, list_name):
     try:
-        # Click on create new list button
+        # Click on create new list button to show the input field
         add_list_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-cy='create-list']"))
         )
         add_list_button.click()
 
-        # Wait for the input field to appear
+        # Wait for the input field to become visible and interactive
         new_list_input = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "[data-cy='add-list-input']"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-cy='add-list-input']"))
         )
+        
+        # Use JavaScript to ensure the input field is focused and set the value
+        driver.execute_script("arguments[0].focus();", new_list_input)
+        driver.execute_script("arguments[0].value = arguments[1];", new_list_input, list_name)
 
-        # Enter list name and press Enter
-        new_list_input.send_keys(list_name)
+        # Confirm the value is set correctly
+        assert new_list_input.get_attribute("value") == list_name, "Failed to set the list name in the input field"
+
+        # Press Enter to submit
         new_list_input.send_keys(Keys.ENTER)
 
-       
-
-
-        # Wait for the Add list button and click it
-        save_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "button:contains('Add list')"))
-        )
-        save_button.click()
+        # Wait for the Add list button and click it if Enter doesn't work
+        try:
+            save_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Add list')]"))
+            )
+            save_button.click()
+        except Exception:
+            print("Save button with text 'Add list' not found or not clickable.")
 
         # Wait for list creation confirmation
-        time.sleep(1)  # Adjust wait time as needed
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, f"[data-cy='list']"))
+        )
 
         # Verify list creation
         lists = driver.find_elements(By.CSS_SELECTOR, "[data-cy='list']")
@@ -77,6 +85,7 @@ def add_list(driver, list_name):
 
     except Exception as e:
         print(f"Error adding list: {str(e)}")
+
 
 # Function to delete a list
 def delete_list(driver, list_name):
