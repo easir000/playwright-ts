@@ -1,0 +1,35 @@
+{
+  "name": "automation--playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test/issues"
+  },
+  "homepage": "https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.7",
+    "allure-playwright": "^3.0.5",
+    "axios": "^1.7.7",
+    "playwright": "^1.48.1"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "playwright-core": "^1.48.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "undici-types": "^6.19.8"
+  },
+  "description": ""
+}
