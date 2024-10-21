@@ -5,15 +5,15 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test.git"
+    "url": "git+https://github.com/easir000/playwright-ts/tree/main"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test/issues"
+    "url": "https://github.com/easir000/playwright-ts/tree/main/issues"
   },
-  "homepage": "https://github.com/easir000/Transmedia-QA-Recruitment-Technical-Test#readme",
+  "homepage": "https://github.com/easir000/playwright-ts/tree/main#readme",
   "devDependencies": {
     "@playwright/test": "^1.48.1",
     "@types/node": "^22.7.7",
