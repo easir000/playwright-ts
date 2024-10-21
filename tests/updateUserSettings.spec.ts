@@ -7,7 +7,9 @@ test('Update User Settings', async ({ page }) => {
   const settingsPage = new SettingsPage(page);
 
   await loginPage.navigate();
-  await loginPage.login('user@example.com', 'password123');
+  await loginPage.login('easir956@gmail.com', '123456');
+  
+
   
   await settingsPage.updateSettings('NewUsername', 'Updated bio', 'https://new-image-url.com');
   

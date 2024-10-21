@@ -7,11 +7,9 @@ test('Create New Article', async ({ page }) => {
   const articlePage = new ArticlePage(page);
 
   await loginPage.navigate();
-  await loginPage.login('user@example.com', 'password123');
+  await loginPage.login('easir956@gmail.com', '123456');
   
-  await articlePage.createArticle('Test Article', 'Test Description', 'Test Body', 'TestTag');
+  await articlePage.createArticle('Hello Easir', 'Describe yourself', 'Lorem ipsum dolor sit amet,', 'xyz');
 
   expect(await page.locator('h1').textContent()).toBe('Test Article');
 });
-
-
